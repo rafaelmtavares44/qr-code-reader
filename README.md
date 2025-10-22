@@ -1,61 +1,109 @@
-# QR Fiscal Receipt Reader
+QR Code Reader - Dashboard BI
+Aplicação desenvolvida em Python com Streamlit para leitura e extração da chave de acesso fiscal (NFC-e) a partir de QR Codes de cupons fiscais. O sistema permite leitura por imagem ou webcam, evita duplicidades e organiza as chaves em um arquivo CSV, pronto para análises em Business Intelligence.
 
-A Streamlit-based web application for reading and processing QR codes from fiscal receipts using your laptop's webcam.
+🧭 Objetivo do Projeto
+Este projeto foi desenvolvido para a disciplina de Business Intelligence com o objetivo de:
 
-## Features
+Automatizar a coleta de chaves fiscais via QR Code.
 
-- 📷 **Real-time Webcam Scanning**: Capture QR codes directly from your webcam
-- 📤 **Image Upload**: Process QR codes from uploaded images
-- 🔒 **Duplicate Prevention**: Automatically detects and prevents duplicate entries
-- 💾 **CSV Storage**: Stores all access keys with timestamps in CSV format
-- 📊 **Statistics Dashboard**: View collection statistics and recent scans
-- 📥 **Data Export**: Download collected data as CSV
+Eliminar erros e duplicidades na entrada de dados.
 
-## Installation
+Centralizar as informações fiscais para análises em dashboards.
 
-1. Install the required dependencies:
-\`\`\`bash
+Simular um processo real de captura de dados de vendas no varejo.
+
+🏗️ Arquitetura e Funcionalidades
+Principais recursos da aplicação:
+
+Leitura via Webcam: Captura QR Codes em tempo real.
+
+Upload de Imagem: Permite processar imagens de notas fiscais.
+
+Extração automática: Utiliza expressões regulares para identificar a chave fiscal (44 dígitos).
+
+Armazenamento: Salva os dados em .csv com data e hora de captura.
+
+Controle de duplicidade: Impede registro repetido da mesma chave.
+
+Interface Web: Desenvolvida com Streamlit, de fácil uso e visualização.
+
+📂 Estrutura do Projeto
+text
+📁 QR CODE READER
+├── BI.py                # Código principal da aplicação
+├── requirements.txt     # Dependências do projeto
+├── README.md            # Documentação completa
+└── /venv/               # Ambiente virtual (não incluído no GitHub)
+⚙️ Tecnologias Utilizadas
+Python 3.13
+
+Streamlit – Interface web
+
+OpenCV e pyzbar – Leitura de QR Code
+
+Pandas – Manipulação e exportação de dados
+
+Pillow (PIL) – Processamento de imagem
+
+Regex (re) – Extração da chave fiscal
+
+🚀 Executando o Projeto
+Clone o repositório:
+
+bash
+git clone https://github.com/SEU_USUARIO/qr-code-reader.git
+cd qr-code-reader
+Crie e ative o ambiente virtual:
+
+bash
+python -m venv venv
+.\venv\Scripts\activate
+Instale as dependências:
+
+bash
 pip install -r requirements.txt
-\`\`\`
+Execute o aplicativo:
 
-2. Run the application:
-\`\`\`bash
-streamlit run app.py
-\`\`\`
+bash
+streamlit run BI.py
+Acesse no navegador:
+http://localhost:8501
 
-## Usage
+🧩 Estrutura do Código
+Funções principais:
 
-### Webcam Scanner
-1. Click "Start Camera" to activate your webcam
-2. Position the QR code in front of the camera
-3. The app will automatically detect, extract, and save the access key
-4. Click "Stop Camera" when finished
+Função	Descrição
+load_existing_keys()	Carrega chaves existentes do CSV
+save_to_csv()	Salva nova chave com data/hora
+extract_access_key()	Extrai a chave fiscal do QR
+process_uploaded_image()	Lê e processa imagem enviada
+decode_qr_from_frame()	Faz leitura ao vivo pela webcam
+📊 Exemplo do Resultado
+Após a leitura bem-sucedida, o sistema gera um arquivo access_keys.csv com o seguinte formato:
 
-### Upload Image
-1. Navigate to the "Upload Image" tab
-2. Upload an image containing a QR code
-3. Click "Process Image" to extract the access key
+access_key	timestamp
+52250339346861034147651070004999491107141815	2025-10-14 19:43:05
+51080167830456000185550010000000031000000030	2025-10-14 19:47:54
+📈 Aplicações Futuras
+Conexão com bancos de dados SQL.
 
-### View Data
-- View all collected access keys in the "View Data" tab
-- Download the CSV file from the sidebar
-- Clear all data if needed
+Integração com dashboards BI (Power BI ou Streamlit Charts).
 
-## Data Format
+Leitura de PDFs fiscais com notas em lote.
 
-The application saves data in `access_keys.csv` with the following structure:
-- `access_key`: The extracted 44-digit fiscal access key
-- `timestamp`: Date and time of capture
+Interface multilíngue e suporte móvel.
 
-## Technical Details
+👨‍💻 Equipe de Desenvolvimento
+Faculdade: SENAI FATESG
+Curso: Inteligência Artificial
+Disciplina: Business Intelligence
+Docente: Ms. Ujeverson Tavares Sampaio
 
-- **QR Code Detection**: Uses pyzbar library for robust QR code decoding
-- **Webcam Access**: OpenCV for real-time video capture
-- **Data Management**: Pandas for CSV operations and duplicate prevention
-- **Web Interface**: Streamlit for user-friendly interface
+Integrantes:
 
-## Troubleshooting
+Rafael Machado, Bruno Matheus, Jorge Vinícius, José Pazian
 
-- **Camera not working**: Check browser permissions for camera access
-- **QR code not detected**: Ensure good lighting and clear image quality
-- **Duplicate warnings**: The system is working correctly - it prevents re-scanning the same receipt
+[Demais nomes do grupo, se houver]
+
+📜 Licença
+Este projeto foi desenvolvido apenas para fins educacionais.
