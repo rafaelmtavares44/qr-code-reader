@@ -48,12 +48,6 @@ Pillow (PIL) – Processamento de imagem
 Regex (re) – Extração da chave fiscal
 
 🚀 Executando o Projeto
-Clone o repositório:
-
-bash
-git clone https://github.com/SEU_USUARIO/qr-code-reader.git
-cd qr-code-reader
-Crie e ative o ambiente virtual:
 
 bash
 python -m venv venv
@@ -103,7 +97,6 @@ Integrantes:
 
 Rafael Machado, Bruno Matheus, Jorge Vinícius, José Pazian
 
-[Demais nomes do grupo, se houver]
 
 📜 Licença
 Este projeto foi desenvolvido apenas para fins educacionais.
